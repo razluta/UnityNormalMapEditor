@@ -6,15 +6,21 @@
     <ui:VisualElement class="box_narrow_line" style="align-items: center; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
         <Style src="/Assets/UnityNormalMapEditor/Editor/CS_NormalMapEditor.uss" />
         <ui:VisualElement name="VE_TextureBackground" style="background-color: rgb(24, 24, 24); width: 256px; height: 256px;">
-            <ui:VisualElement name="VE_Texture" style="background-color: rgba(79, 79, 79, 255); -unity-background-scale-mode: scale-to-fit; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; flex-shrink: 0;">
-                <ui:Label text="&lt;click to load texture&gt;" name="LB_ClickToLoad" style="-unity-text-align: middle-center; flex-grow: 1; border-left-color: rgba(0, 0, 0, 255); border-right-color: rgba(0, 0, 0, 255); border-top-color: rgba(0, 0, 0, 255); border-bottom-color: rgba(0, 0, 0, 255); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px;" />
+            <ui:VisualElement name="VE_Texture" style="background-color: rgb(79, 79, 79); -unity-background-scale-mode: scale-to-fit; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; flex-shrink: 0;">
+                <ui:Label text="&lt;click to load texture&gt;" name="LB_ClickToLoad" style="-unity-text-align: middle-center; flex-grow: 1; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px;" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:Label text="&lt;Texture Asset Name&gt;" style="margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px;" />
     </ui:VisualElement>
     <ui:VisualElement class="box_narrow_line">
         <Style src="/Assets/UnityNormalMapEditor/Editor/CS_NormalMapEditor.uss" />
-        <ui:Label text="Save Parameters" class="text_box_subtitles" />
+        <ui:Label text="Batching" class="text_box_subtitles" />
+        <ui:Toggle label="Batch a directory?" value="false" style="margin-top: 3px;" />
+        <ui:Button text="Browse" class="button_default" />
+    </ui:VisualElement>
+    <ui:VisualElement class="box_narrow_line">
+        <Style src="/Assets/UnityNormalMapEditor/Editor/CS_NormalMapEditor.uss" />
+        <ui:Label text="Single Texture Save Parameters" class="text_box_subtitles" />
         <ui:Toggle label="Overwrite original?" value="true" style="margin-top: 3px;" />
         <ui:TextField picking-mode="Ignore" label="New Name" value="filler text" text="&lt;name&gt;" />
         <ui:Toggle label="Change save path" style="margin-top: 3px;" />
@@ -22,15 +28,21 @@
     </ui:VisualElement>
     <ui:VisualElement class="box_narrow_line">
         <Style src="/Assets/UnityNormalMapEditor/Editor/CS_NormalMapEditor.uss" />
-        <ui:Label text="Flip/Invert Channels" class="text_box_subtitles" />
-        <ui:Button text="R - Flip Red Channel" class="button_default" style="background-color: rgba(144, 27, 27, 255);" />
-        <ui:Button text="G - Flip Green Channel" class="button_default" style="background-color: rgba(39, 120, 22, 255);" />
-        <ui:Button text="B - Flip Blue Channel" class="button_default" style="background-color: rgba(39, 39, 214, 255);" />
+        <ui:Label text="Invert Normal Map Channels" class="text_box_subtitles" />
+        <ui:Button text="R - Invert Red Channel" class="button_default" style="background-color: rgb(144, 27, 27);" />
+        <ui:Button text="G - Invert Green Channel" class="button_default" style="background-color: rgb(39, 120, 22);" />
+        <ui:Button text="B - Invert Blue Channel" class="button_default" style="background-color: rgb(39, 39, 214);" />
     </ui:VisualElement>
     <ui:VisualElement class="box_narrow_line">
         <Style src="/Assets/UnityNormalMapEditor/Editor/CS_NormalMapEditor.uss" />
         <ui:Label text="Rotate Normal Map" class="text_box_subtitles" />
         <ui:Button text=" ↻ Rotate 90 degrees clockwise" class="button_default" />
         <ui:Button text="↺ Rotate 90 degrees counterclockwise" class="button_default" />
+    </ui:VisualElement>
+    <ui:VisualElement class="box_narrow_line">
+        <Style src="/Assets/UnityNormalMapEditor/Editor/CS_NormalMapEditor.uss" />
+        <ui:Label text="Flip Normal Map" class="text_box_subtitles" />
+        <ui:Button text="↔ Flip Horizontal" class="button_default" />
+        <ui:Button text="↕ Flip Vertical" class="button_default" />
     </ui:VisualElement>
 </ui:UXML>
