@@ -10,6 +10,7 @@ namespace UnityNormalMapEditor.Editor
         private static readonly Vector2 NormalMapEditorWindowSize = new Vector2(350, 800);
 
         private static VisualElement _root;
+        private NormalMapEditorData _data;
 
 
         [MenuItem(NormalMapEditorMenuItemPath)]
@@ -23,6 +24,7 @@ namespace UnityNormalMapEditor.Editor
         private void OnEnable()
         {
             _root = rootVisualElement;
+            _data = new NormalMapEditorData();
 
             #region INITIALIZATION AND QUERY
             // Root
