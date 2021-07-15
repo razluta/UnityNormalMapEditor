@@ -9,17 +9,17 @@
         <ui:Toggle label="Batch a directory?" value="false" name="TG_BatchDirectory" style="margin-top: 3px;" />
         <ui:Button text="Browse" name="BT_BrowseBatchDirectory" class="button_default" />
     </ui:VisualElement>
-    <ui:VisualElement class="box_narrow_line">
+    <ui:VisualElement name="VE_SingleTexturePanel" class="box_narrow_line">
         <Style src="CS_NormalMapEditor.uss" />
         <ui:Label text="Single Texture Load / Preview" class="text_box_subtitles" />
         <ui:VisualElement style="align-items: center; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
             <ui:VisualElement name="VE_TextureBackground" style="background-color: rgb(24, 24, 24); width: 256px; height: 256px;">
-                <ui:Button text="&lt;click to load texture&gt;" name="BT_Texture" style="margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; flex-grow: 1;" />
+                <ui:Button text="&lt;click to load texture&gt;" name="BT_Texture" style="margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; background-color: rgba(149, 149, 149, 0);" />
             </ui:VisualElement>
             <ui:Label text="&lt;Texture Asset Name&gt;" name="LB_TextureName" style="margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px;" />
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement class="box_narrow_line">
+    <ui:VisualElement name="VE_SingleTextureParams" class="box_narrow_line">
         <Style src="CS_NormalMapEditor.uss" />
         <ui:Label text="Single Texture Save Parameters" class="text_box_subtitles" />
         <ui:Toggle label="Overwrite original?" value="true" name="TG_OverwriteOriginal" style="margin-top: 3px;" />

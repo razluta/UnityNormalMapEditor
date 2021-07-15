@@ -11,6 +11,8 @@ namespace UnityNormalMapEditor.Editor
         public const string NormalMapEditorButtonName = "BT_NormalMapEditor";
         public const string BatchDirectoryToggleName = "TG_BatchDirectory";
         public const string BrowseBatchDirectoryButtonName = "BT_BrowseBatchDirectory";
+        public const string SingleTexturePanelVisualElementName = "VE_SingleTexturePanel";
+        public const string SingleTextureParamsVisualElementName = "VE_SingleTextureParams";
         public const string TextureBackgroundVisualElementName = "VE_TextureBackground";
         public const string TextureButtonName = "BT_Texture";
         public const string TextureNameLabelName = "LB_TextureName";
@@ -25,5 +27,7 @@ namespace UnityNormalMapEditor.Editor
         public const string RotateCounterclockwiseButtonName = "BT_RotateCounterclockwise";
         public const string FlipHorizontalButtonName = "BT_FlipHorizontal";
         public const string FlipVerticalButtonName = "BT_FlipVertical";
+
+        public const string BrowseLabel = "Browse";
     }
 }
