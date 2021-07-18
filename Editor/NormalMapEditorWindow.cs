@@ -146,7 +146,6 @@ namespace UnityNormalMapEditor.Editor
             UpdateUiContentsFromData();
         }
 
-
         private void UpdateUiContentsFromData()
         {
             _data.UpdateLoadedTexture(_data.SingleTexturePath);
