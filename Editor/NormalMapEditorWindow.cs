@@ -125,6 +125,8 @@ namespace UnityNormalMapEditor.Editor
 
         private void LoadSingleTexture()
         {
+            _data.SingleTexture = null;
+            
             var texturePath = EditorUtility.OpenFilePanel(BrowseLabel, "", "");
             if (!texturePath.Contains(Application.dataPath))
             {
