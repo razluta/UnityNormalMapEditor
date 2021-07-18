@@ -12,6 +12,11 @@
             <ui:Button text="Browse" name="BT_BrowseBatchDirectory" class="button_default" />
             <ui:Label text="&lt;Batch Directory Path&gt;" name="LB_BrowseBatchPath" class="label_display_path" style="margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; -unity-font-style: italic;" />
         </ui:VisualElement>
+        <ui:VisualElement name="VE_SingleTexturePanel" class="box_narrow_line">
+            <ui:Label text="Single Texture Load / Preview" class="text_box_subtitles" />
+            <ui:Button text="Browse" name="BT_BrowseTexture" class="button_default" />
+            <ui:Label text="&lt;Texture Asset Path&gt;" name="LB_TexturePath" class="label_display_path" style="margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; -unity-font-style: italic; -unity-text-align: upper-center;" />
+        </ui:VisualElement>
         <ui:VisualElement name="VE_SingleTextureParams" class="box_narrow_line">
             <ui:Label text="Single Texture Save Parameters" class="text_box_subtitles" />
             <ui:Toggle label="Overwrite original?" value="true" name="TG_OverwriteOriginal" style="margin-top: 3px;" />
@@ -19,11 +24,6 @@
             <ui:Toggle label="Change save path" name="TG_ChangeSavePath" style="margin-top: 3px;" />
             <ui:Button text="Browse" name="BT_BrowseSingleTexturePath" class="button_default" />
             <ui:Label text="&lt;New Texture Directory Path&gt;" name="LB_TexturePath" class="label_display_path" style="margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; -unity-font-style: italic; -unity-text-align: upper-center;" />
-        </ui:VisualElement>
-        <ui:VisualElement name="VE_SingleTexturePanel" class="box_narrow_line">
-            <ui:Label text="Single Texture Load / Preview" class="text_box_subtitles" />
-            <ui:Button text="Browse" name="BT_BrowseTexture" class="button_default" />
-            <ui:Label text="&lt;Texture Asset Path&gt;" name="LB_TexturePath" class="label_display_path" style="margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; -unity-font-style: italic; -unity-text-align: upper-center;" />
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement class="box_narrow_line">
