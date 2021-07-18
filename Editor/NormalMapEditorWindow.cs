@@ -17,8 +17,7 @@ namespace UnityNormalMapEditor.Editor
         private Toggle _batchDirectoryToggle;
         private Button _browseBatchDirectoryButton;
         private VisualElement _singleTexturePanelVisualElement;
-        private VisualElement _textureVisualElement;
-        private Button _textureButton;
+        private Button _browseTextureButton;
         private Label _textureNameLabelName;
         private VisualElement _singleTextureParamsVisualElement;
         private Toggle _overwriteOriginalToggle;
@@ -55,8 +54,7 @@ namespace UnityNormalMapEditor.Editor
             _batchDirectoryToggle = _root.Q<Toggle>(BatchDirectoryToggleName);
             _browseBatchDirectoryButton = _root.Q<Button>(BrowseBatchDirectoryButtonName);
             _singleTexturePanelVisualElement = _root.Q<VisualElement>(SingleTexturePanelVisualElementName);
-            _textureVisualElement = _root.Q<VisualElement>(TextureVisualElementName);
-            _textureButton = _root.Q<Button>(TextureButtonName);
+            _browseTextureButton = _root.Q<Button>(BrowseTextureButtonName);
             _textureNameLabelName = _root.Q<Label>(TextureNameLabelName);
             _singleTextureParamsVisualElement = _root.Q<VisualElement>(SingleTextureParamsVisualElementName);
             _overwriteOriginalToggle = _root.Q<Toggle>(OverwriteOriginalToggleName);
@@ -83,7 +81,7 @@ namespace UnityNormalMapEditor.Editor
             });
 
             _browseBatchDirectoryButton.clickable.clicked += BrowseBatchDirectory;
-            _textureButton.clickable.clicked += LoadSingleTexture;
+            _browseTextureButton.clickable.clicked += LoadSingleTexture;
             _overwriteOriginalToggle.RegisterValueChangedCallback(evt =>
             {
                 _data.IsOverwriteOriginal = _overwriteOriginalToggle.value;
@@ -156,8 +154,7 @@ namespace UnityNormalMapEditor.Editor
 
             if (_data.SingleTexture != null)
             {
-                _textureButton.text = string.Empty;
-                _textureVisualElement.style.backgroundImage = new StyleBackground(_data.SingleTexture);
+                _browseTextureButton.text = string.Empty;
                 _textureNameLabelName.text = _data.SingleTexture.name;
             }
             

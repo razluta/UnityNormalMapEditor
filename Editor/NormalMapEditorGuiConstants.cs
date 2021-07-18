@@ -12,9 +12,8 @@ namespace UnityNormalMapEditor.Editor
         public const string BatchDirectoryToggleName = "TG_BatchDirectory";
         public const string BrowseBatchDirectoryButtonName = "BT_BrowseBatchDirectory";
         public const string SingleTexturePanelVisualElementName = "VE_SingleTexturePanel";
+        public const string BrowseTextureButtonName = "BT_BrowseTexture";
         public const string SingleTextureParamsVisualElementName = "VE_SingleTextureParams";
-        public const string TextureVisualElementName = "VE_Texture";
-        public const string TextureButtonName = "BT_Texture";
         public const string TextureNameLabelName = "LB_TextureName";
         public const string OverwriteOriginalToggleName = "TG_OverwriteOriginal";
         public const string NewNameTextFieldName = "TF_NewName";
