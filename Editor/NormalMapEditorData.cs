@@ -10,6 +10,7 @@ namespace UnityNormalMapEditor.Editor
         private bool _isBatchDirectory;
         private string _batchDirectoryPath;
         private Texture2D _singleTexture;
+        private string _singleTexturePath;
         private bool _isOverwriteOriginal;
         private string _newName;
         private bool _isChangePath;
@@ -18,6 +19,7 @@ namespace UnityNormalMapEditor.Editor
         private const bool IsBatchDirectoryDefault = false;
         private const string BatchDirectoryPathDefault = "";
         private const Texture2D SingleTextureDefault = null;
+        private const string SingleTexturePathDefault = "";
         private const bool IsOverwriteOriginalDefault = true;
         private const string NewNameDefault = "<name>";
         private const bool IsChangePathDefault = false;
@@ -39,6 +41,12 @@ namespace UnityNormalMapEditor.Editor
         {
             get => _singleTexture;
             set => _singleTexture = value;
+        }
+
+        public string SingleTexturePath
+        {
+            get => _singleTexturePath;
+            set => _singleTexturePath = value;
         }
 
         public bool IsOverwriteOriginal
@@ -70,18 +78,16 @@ namespace UnityNormalMapEditor.Editor
             IsBatchDirectory = IsBatchDirectoryDefault;
             BatchDirectoryPath = BatchDirectoryPathDefault;
             SingleTexture = SingleTextureDefault;
+            SingleTexturePath = SingleTexturePathDefault;
             IsOverwriteOriginal = IsOverwriteOriginalDefault;
             NewName = NewNameDefault;
             IsChangePath = IsChangePathDefault;
             NewAssetPath = NewAssetPathDefault;
         }
 
-        public void UpdateExternalData()
+        public void UpdateLoadedTexture(string texturePath)
         {
-            if (SingleTexture != null)
-            {
-                SingleTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(AssetDatabase.GetAssetPath(SingleTexture));
-            }
+            SingleTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(texturePath);
         }
     }
 }

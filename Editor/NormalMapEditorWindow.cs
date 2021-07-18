@@ -133,21 +133,21 @@ namespace UnityNormalMapEditor.Editor
             }
 
             var internalTexturePath = texturePath.Replace(Application.dataPath, "Assets");
-            var texture = AssetDatabase.LoadAssetAtPath<Texture2D>(internalTexturePath);
-            if (texture == null)
+            _data.SingleTexturePath = internalTexturePath;
+            _data.SingleTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(internalTexturePath);
+            if (_data.SingleTexture == null)
             {
                 Debug.LogError("Selected asset cannot be loaded as a texture.");
                 return;
             }
-
-            _data.SingleTexture = texture;
+            
             UpdateUiContentsFromData();
         }
 
 
         private void UpdateUiContentsFromData()
         {
-            _data.UpdateExternalData();
+            _data.UpdateLoadedTexture(_data.SingleTexturePath);
             _batchDirectoryToggle.value = _data.IsBatchDirectory;
             _browseBatchDirectoryButton.SetEnabled(_batchDirectoryToggle.value);
             _singleTexturePanelVisualElement.SetEnabled(!_batchDirectoryToggle.value);
@@ -156,7 +156,7 @@ namespace UnityNormalMapEditor.Editor
             if (_data.SingleTexture != null)
             {
                 _textureButton.text = string.Empty;
-                _textureVisualElement.style.backgroundImage = _data.SingleTexture;
+                _textureVisualElement.style.backgroundImage = new StyleBackground(_data.SingleTexture);
                 _textureNameLabelName.text = _data.SingleTexture.name;
             }
             
