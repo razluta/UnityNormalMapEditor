@@ -8,7 +8,7 @@ namespace UnityNormalMapEditor.Editor
 {
     public class NormalMapEditorWindow : EditorWindow
     {
-        private static readonly Vector2 NormalMapEditorWindowSize = new Vector2(350, 800);
+        private static readonly Vector2 NormalMapEditorWindowSize = new Vector2(350, 850);
 
         private static VisualElement _root;
         private NormalMapEditorData _data;
@@ -17,7 +17,7 @@ namespace UnityNormalMapEditor.Editor
         private Toggle _batchDirectoryToggle;
         private Button _browseBatchDirectoryButton;
         private VisualElement _singleTexturePanelVisualElement;
-        private VisualElement _textureBackgroundVisualElement;
+        private VisualElement _textureVisualElement;
         private Button _textureButton;
         private Label _textureNameLabelName;
         private VisualElement _singleTextureParamsVisualElement;
@@ -30,6 +30,7 @@ namespace UnityNormalMapEditor.Editor
         private Button _invertBlueButton;
         private Button _rotateClockwiseButton;
         private Button _rotateCounterclockwiseButton;
+        private Button _rotate180Button;
         private Button _flipHorizontalButton;
         private Button _flipVerticalButton;
 
@@ -54,7 +55,7 @@ namespace UnityNormalMapEditor.Editor
             _batchDirectoryToggle = _root.Q<Toggle>(BatchDirectoryToggleName);
             _browseBatchDirectoryButton = _root.Q<Button>(BrowseBatchDirectoryButtonName);
             _singleTexturePanelVisualElement = _root.Q<VisualElement>(SingleTexturePanelVisualElementName);
-            _textureBackgroundVisualElement = _root.Q<VisualElement>(TextureBackgroundVisualElementName);
+            _textureVisualElement = _root.Q<VisualElement>(TextureVisualElementName);
             _textureButton = _root.Q<Button>(TextureButtonName);
             _textureNameLabelName = _root.Q<Label>(TextureNameLabelName);
             _singleTextureParamsVisualElement = _root.Q<VisualElement>(SingleTextureParamsVisualElementName);
@@ -67,6 +68,7 @@ namespace UnityNormalMapEditor.Editor
             _invertBlueButton= _root.Q<Button>(InvertBlueButtonName);
             _rotateClockwiseButton = _root.Q<Button>(RotateClockwiseButtonName);
             _rotateCounterclockwiseButton = _root.Q<Button>(RotateCounterclockwiseButtonName);
+            _rotate180Button = _root.Q<Button>(Rotate180ButtonName);
             _flipHorizontalButton = _root.Q<Button>(FlipHorizontalButtonName);
             _flipVerticalButton = _root.Q<Button>(FlipVerticalButtonName);
             UpdateUiContentsFromData();
@@ -97,8 +99,22 @@ namespace UnityNormalMapEditor.Editor
                 _data.IsChangePath = _changeSavePathToggle.value;
                 UpdateUiContentsFromData();
             });
-            
 
+            _invertRedButton.clickable.clicked += InvertRedChannel;
+            
+            _invertGreenButton.clickable.clicked += InvertGreenChannel;
+            
+            _invertBlueButton.clickable.clicked += InvertBlueChannel;
+
+            _rotateClockwiseButton.clickable.clicked += Rotate90DegreesClockwise;
+
+            _rotateCounterclockwiseButton.clickable.clicked += Rotate90DegreesCounterclockwise;
+
+            _rotate180Button.clickable.clicked += Rotate180;
+            
+            _flipHorizontalButton.clickable.clicked += FlipHorizontal;
+            
+            _flipVerticalButton.clickable.clicked += FlipVertical;
             #endregion
         }
 
@@ -131,6 +147,7 @@ namespace UnityNormalMapEditor.Editor
 
         private void UpdateUiContentsFromData()
         {
+            _data.UpdateExternalData();
             _batchDirectoryToggle.value = _data.IsBatchDirectory;
             _browseBatchDirectoryButton.SetEnabled(_batchDirectoryToggle.value);
             _singleTexturePanelVisualElement.SetEnabled(!_batchDirectoryToggle.value);
@@ -139,7 +156,7 @@ namespace UnityNormalMapEditor.Editor
             if (_data.SingleTexture != null)
             {
                 _textureButton.text = string.Empty;
-                _textureButton.style.backgroundImage = new StyleBackground(_data.SingleTexture);
+                _textureVisualElement.style.backgroundImage = _data.SingleTexture;
                 _textureNameLabelName.text = _data.SingleTexture.name;
             }
             
@@ -153,5 +170,75 @@ namespace UnityNormalMapEditor.Editor
             _browseSingleTextureButton.SetEnabled(_changeSavePathToggle.value);
         }
 
+        private void InvertRedChannel()
+        {
+            // Single Texture
+            InvertColorChannel(new []{_data.SingleTexture}, TextureUtilities.TextureChannel.Red);
+            UpdateUiContentsFromData();
+        }
+
+        private void InvertGreenChannel()
+        {
+            // Single Texture
+            InvertColorChannel(new []{_data.SingleTexture}, TextureUtilities.TextureChannel.Green);
+            UpdateUiContentsFromData();
+        }
+
+        private void InvertBlueChannel()
+        {
+            // Single Texture
+            InvertColorChannel(new []{_data.SingleTexture}, TextureUtilities.TextureChannel.Blue);
+            UpdateUiContentsFromData();
+        }
+
+        private void InvertColorChannel(Texture2D[] textures, TextureUtilities.TextureChannel textureChannel)
+        {
+            foreach (var texture in textures)
+            {
+                if (texture == null) continue;
+                var invertedTexture = TextureUtilities.GetTextureWithInvertedChannel(texture, textureChannel);
+                TextureUtilities.SaveTextureToPath(invertedTexture, AssetDatabase.GetAssetPath(texture));
+            }
+        }
+
+        private void Rotate90DegreesClockwise()
+        {
+            // Single Texture
+            var newTexture = TextureUtilities.RotateNormalClockwise(_data.SingleTexture);
+            TextureUtilities.SaveTextureToPath(newTexture, AssetDatabase.GetAssetPath(_data.SingleTexture));
+            UpdateUiContentsFromData();
+        }
+
+        private void Rotate90DegreesCounterclockwise()
+        {
+            // Single Texture
+            var newTexture = TextureUtilities.RotateNormalCounterclockwise(_data.SingleTexture);
+            TextureUtilities.SaveTextureToPath(newTexture, AssetDatabase.GetAssetPath(_data.SingleTexture));
+            UpdateUiContentsFromData();
+        }
+
+        private void Rotate180()
+        {
+            // Single Texture
+            var newTexture = TextureUtilities.RotateNormal180(_data.SingleTexture);
+            TextureUtilities.SaveTextureToPath(newTexture, AssetDatabase.GetAssetPath(_data.SingleTexture));
+            UpdateUiContentsFromData();
+        }
+
+        private void FlipHorizontal()
+        {
+            // Single Texture
+            var newTexture = TextureUtilities.FlipNormalHorizontal(_data.SingleTexture);
+            TextureUtilities.SaveTextureToPath(newTexture, AssetDatabase.GetAssetPath(_data.SingleTexture));
+            UpdateUiContentsFromData();
+        }
+
+        private void FlipVertical()
+        {
+            // Single Texture
+            var newTexture = TextureUtilities.FlipNormalVertical(_data.SingleTexture);
+            TextureUtilities.SaveTextureToPath(newTexture, AssetDatabase.GetAssetPath(_data.SingleTexture));
+            UpdateUiContentsFromData();
+        }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace UnityNormalMapEditor.Editor
@@ -73,6 +74,14 @@ namespace UnityNormalMapEditor.Editor
             NewName = NewNameDefault;
             IsChangePath = IsChangePathDefault;
             NewAssetPath = NewAssetPathDefault;
+        }
+
+        public void UpdateExternalData()
+        {
+            if (SingleTexture != null)
+            {
+                SingleTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(AssetDatabase.GetAssetPath(SingleTexture));
+            }
         }
     }
 }

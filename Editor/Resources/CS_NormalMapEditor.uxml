@@ -14,7 +14,9 @@
         <ui:Label text="Single Texture Load / Preview" class="text_box_subtitles" />
         <ui:VisualElement style="align-items: center; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
             <ui:VisualElement name="VE_TextureBackground" style="background-color: rgb(24, 24, 24); width: 256px; height: 256px;">
-                <ui:Button text="&lt;click to load texture&gt;" name="BT_Texture" style="margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; background-color: rgba(149, 149, 149, 0);" />
+                <ui:VisualElement name="VE_Texture" style="margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; flex-shrink: 0;">
+                    <ui:Button text="&lt;click to load texture&gt;" name="BT_Texture" style="margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; background-color: rgba(149, 149, 149, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0;" />
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:Label text="&lt;Texture Asset Name&gt;" name="LB_TextureName" style="margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px;" />
         </ui:VisualElement>
@@ -30,15 +32,16 @@
     <ui:VisualElement class="box_narrow_line">
         <Style src="CS_NormalMapEditor.uss" />
         <ui:Label text="Invert Normal Map Channels" class="text_box_subtitles" />
-        <ui:Button text="R - Invert Red Channel" name="BT_InvertRed" class="button_default" style="background-color: rgb(144, 27, 27);" />
-        <ui:Button text="G - Invert Green Channel" name="BT_InvertGreen" class="button_default" style="background-color: rgb(39, 120, 22);" />
-        <ui:Button text="B - Invert Blue Channel" name="BT_InvertBlue" class="button_default" style="background-color: rgb(39, 39, 214);" />
+        <ui:Button text="R - Invert Red Channel" name="BT_InvertRed" class="button_default" />
+        <ui:Button text="G - Invert Green Channel" name="BT_InvertGreen" class="button_default" />
+        <ui:Button text="B - Invert Blue Channel" name="BT_InvertBlue" class="button_default" />
     </ui:VisualElement>
     <ui:VisualElement class="box_narrow_line">
         <Style src="CS_NormalMapEditor.uss" />
         <ui:Label text="Rotate Normal Map" class="text_box_subtitles" />
         <ui:Button text=" ↻ Rotate 90 degrees clockwise" name="BT_RotateClockwise" class="button_default" />
         <ui:Button text="↺ Rotate 90 degrees counterclockwise" name="BT_RotateCounterclockwise" class="button_default" />
+        <ui:Button text="↺ Rotate 180 degrees" name="BT_Rotate180" class="button_default" />
     </ui:VisualElement>
     <ui:VisualElement class="box_narrow_line">
         <Style src="CS_NormalMapEditor.uss" />
