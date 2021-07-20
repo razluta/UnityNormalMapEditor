@@ -11,14 +11,16 @@ namespace UnityNormalMapEditor.Editor
         public const string NormalMapEditorButtonName = "BT_NormalMapEditor";
         public const string BatchDirectoryToggleName = "TG_BatchDirectory";
         public const string BrowseBatchDirectoryButtonName = "BT_BrowseBatchDirectory";
+        public const string BrowseBatchPathLabelName = "LB_BrowseBatchPath";
         public const string SingleTexturePanelVisualElementName = "VE_SingleTexturePanel";
         public const string BrowseTextureButtonName = "BT_BrowseTexture";
+        public const string TexturePathLabelName = "LB_TexturePath";
         public const string SingleTextureParamsVisualElementName = "VE_SingleTextureParams";
-        public const string TextureNameLabelName = "LB_TextureName";
         public const string OverwriteOriginalToggleName = "TG_OverwriteOriginal";
         public const string NewNameTextFieldName = "TF_NewName";
         public const string ChangeSavePathToggleName = "TG_ChangeSavePath";
         public const string BrowseSingleTexturePathButtonName = "BT_BrowseSingleTexturePath";
+        public const string TextureDirectoryPathLabelName = "LB_TextureDirectoryPath";
         public const string InvertRedButtonName = "BT_InvertRed";
         public const string InvertGreenButtonName = "BT_InvertGreen";
         public const string InvertBlueButtonName = "BT_InvertBlue";

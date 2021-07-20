@@ -6,7 +6,7 @@
     <ui:VisualElement class="box_narrow_line">
         <Style src="CS_NormalMapEditor.uss" />
         <ui:Label text="LOAD TEXTURES" style="-unity-font-style: bold; -unity-text-align: upper-center;" />
-        <ui:VisualElement class="box_narrow_line">
+        <ui:VisualElement class="box_narrow_line" style="display: none;">
             <ui:Label text="Batching" class="text_box_subtitles" />
             <ui:Toggle label="Batch a directory?" value="false" name="TG_BatchDirectory" style="margin-top: 3px;" />
             <ui:Button text="Browse" name="BT_BrowseBatchDirectory" class="button_default" />
@@ -17,13 +17,13 @@
             <ui:Button text="Browse" name="BT_BrowseTexture" class="button_default" />
             <ui:Label text="&lt;Texture Asset Path&gt;" name="LB_TexturePath" class="label_display_path" style="margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; -unity-font-style: italic; -unity-text-align: upper-center;" />
         </ui:VisualElement>
-        <ui:VisualElement name="VE_SingleTextureParams" class="box_narrow_line">
+        <ui:VisualElement name="VE_SingleTextureParams" class="box_narrow_line" style="display: none;">
             <ui:Label text="Single Texture Save Parameters" class="text_box_subtitles" />
             <ui:Toggle label="Overwrite original?" value="true" name="TG_OverwriteOriginal" style="margin-top: 3px;" />
             <ui:TextField picking-mode="Ignore" label="New name" value="filler text" text="&lt;name&gt;" name="TF_NewName" />
             <ui:Toggle label="Change save path" name="TG_ChangeSavePath" style="margin-top: 3px;" />
             <ui:Button text="Browse" name="BT_BrowseSingleTexturePath" class="button_default" />
-            <ui:Label text="&lt;New Texture Directory Path&gt;" name="LB_TexturePath" class="label_display_path" style="margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; -unity-font-style: italic; -unity-text-align: upper-center;" />
+            <ui:Label text="&lt;New Texture Directory Path&gt;" name="LB_TextureDirectoryPath" class="label_display_path" style="margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; -unity-font-style: italic; -unity-text-align: upper-center;" />
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement class="box_narrow_line">

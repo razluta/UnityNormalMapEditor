@@ -17,13 +17,13 @@ namespace UnityNormalMapEditor.Editor
         private string _newAssetPath;
 
         private const bool IsBatchDirectoryDefault = false;
-        private const string BatchDirectoryPathDefault = "";
+        private const string BatchDirectoryPathDefault = "<Batch Directory Path>";
         private const Texture2D SingleTextureDefault = null;
-        private const string SingleTexturePathDefault = "";
+        private const string SingleTexturePathDefault = "<Texture Asset Path>";
         private const bool IsOverwriteOriginalDefault = true;
         private const string NewNameDefault = "<name>";
         private const bool IsChangePathDefault = false;
-        private const string NewAssetPathDefault = "";
+        private const string NewAssetPathDefault = "<New Texture Directory Path>";
 
         public bool IsBatchDirectory
         {

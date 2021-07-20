@@ -8,7 +8,7 @@ namespace UnityNormalMapEditor.Editor
 {
     public class NormalMapEditorWindow : EditorWindow
     {
-        private static readonly Vector2 NormalMapEditorWindowSize = new Vector2(350, 850);
+        private static readonly Vector2 NormalMapEditorWindowSize = new Vector2(350, 550);
 
         private static VisualElement _root;
         private NormalMapEditorData _data;
@@ -16,14 +16,16 @@ namespace UnityNormalMapEditor.Editor
         private Button _normalMapEditorButton;
         private Toggle _batchDirectoryToggle;
         private Button _browseBatchDirectoryButton;
+        private Label _browseBatchPathLabel;
         private VisualElement _singleTexturePanelVisualElement;
         private Button _browseTextureButton;
-        private Label _textureNameLabelName;
+        private Label _texturePathLabel;
         private VisualElement _singleTextureParamsVisualElement;
         private Toggle _overwriteOriginalToggle;
         private TextField _newNameTextField;
         private Toggle _changeSavePathToggle;
-        private Button _browseSingleTextureButton;
+        private Button _browseSingleTexturePathButton;
+        private Label _textureDirectoryPathLabel;
         private Button _invertRedButton;
         private Button _invertGreenButton;
         private Button _invertBlueButton;
@@ -53,14 +55,16 @@ namespace UnityNormalMapEditor.Editor
             _normalMapEditorButton = _root.Q<Button>(NormalMapEditorButtonName);
             _batchDirectoryToggle = _root.Q<Toggle>(BatchDirectoryToggleName);
             _browseBatchDirectoryButton = _root.Q<Button>(BrowseBatchDirectoryButtonName);
+            _browseBatchPathLabel = _root.Q<Label>(BrowseBatchPathLabelName);
             _singleTexturePanelVisualElement = _root.Q<VisualElement>(SingleTexturePanelVisualElementName);
             _browseTextureButton = _root.Q<Button>(BrowseTextureButtonName);
-            _textureNameLabelName = _root.Q<Label>(TextureNameLabelName);
+            _texturePathLabel = _root.Q<Label>(TexturePathLabelName);
             _singleTextureParamsVisualElement = _root.Q<VisualElement>(SingleTextureParamsVisualElementName);
             _overwriteOriginalToggle = _root.Q<Toggle>(OverwriteOriginalToggleName);
             _newNameTextField = _root.Q<TextField>(NewNameTextFieldName);
             _changeSavePathToggle = _root.Q<Toggle>(ChangeSavePathToggleName);
-            _browseSingleTextureButton = _root.Q<Button>(BrowseSingleTexturePathButtonName);
+            _browseSingleTexturePathButton = _root.Q<Button>(BrowseSingleTexturePathButtonName);
+            _textureDirectoryPathLabel = _root.Q<Label>(TextureDirectoryPathLabelName);
             _invertRedButton = _root.Q<Button>(InvertRedButtonName);
             _invertGreenButton = _root.Q<Button>(InvertGreenButtonName);
             _invertBlueButton= _root.Q<Button>(InvertBlueButtonName);
@@ -98,6 +102,8 @@ namespace UnityNormalMapEditor.Editor
                 UpdateUiContentsFromData();
             });
 
+            _browseSingleTexturePathButton.clickable.clicked += BrowseNewTextureDirectoryPath;
+
             _invertRedButton.clickable.clicked += InvertRedChannel;
             
             _invertGreenButton.clickable.clicked += InvertGreenChannel;
@@ -119,6 +125,7 @@ namespace UnityNormalMapEditor.Editor
         private void BrowseBatchDirectory()
         {
             _data.BatchDirectoryPath = EditorUtility.OpenFolderPanel(BrowseLabel, "", "");
+            UpdateUiContentsFromData();
         }
 
         private void LoadSingleTexture()
@@ -144,6 +151,12 @@ namespace UnityNormalMapEditor.Editor
             UpdateUiContentsFromData();
         }
 
+        private void BrowseNewTextureDirectoryPath()
+        {
+            _data.NewAssetPath = EditorUtility.OpenFolderPanel(BrowseLabel, "", "");
+            UpdateUiContentsFromData();
+        }
+
         private void UpdateUiContentsFromData()
         {
             _data.UpdateLoadedTexture(_data.SingleTexturePath);
@@ -154,18 +167,20 @@ namespace UnityNormalMapEditor.Editor
 
             if (_data.SingleTexture != null)
             {
-                _browseTextureButton.text = string.Empty;
-                _textureNameLabelName.text = _data.SingleTexture.name;
+                _texturePathLabel.text = _data.SingleTexturePath;
             }
             
             _overwriteOriginalToggle.value = _data.IsOverwriteOriginal;
             _newNameTextField.SetEnabled(!_overwriteOriginalToggle.value);
             _changeSavePathToggle.SetEnabled(!_overwriteOriginalToggle.value);
-            _browseSingleTextureButton.SetEnabled(!_overwriteOriginalToggle.value);
+            _browseSingleTexturePathButton.SetEnabled(!_overwriteOriginalToggle.value);
             
             _newNameTextField.value = _data.NewName;
             _changeSavePathToggle.value = _data.IsChangePath;
-            _browseSingleTextureButton.SetEnabled(_changeSavePathToggle.value);
+            _browseSingleTexturePathButton.SetEnabled(_changeSavePathToggle.value);
+            
+            _browseBatchPathLabel.text = _data.BatchDirectoryPath;
+            _textureDirectoryPathLabel.text = _data.NewAssetPath;
         }
 
         private void InvertRedChannel()
