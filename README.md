@@ -12,4 +12,18 @@ The tool has been verified on the following versions of Unity:
 
 *  *  *  *  *
 
+## Setup
+##### Option A) Clone or download the repository and drop it in your Unity project.
+##### Option B) Add the repository to the package manifest (go in YourProject/Packages/ and open the "manifest.json" file and add "com..." line in the depenencies section). If you don't have Git installed, Unity will require you to install it.
+```
+{
+  "dependencies": {
+      ...
+      "com.razluta.normalmapeditor": "https://github.com/razluta/UnityNormalMapEditor.git"
+      ...
+  }
+}
+```
+*  *  *  *  *
+
 ![](/Screenshots/NormalMapEditor_Screenshot001.png)
