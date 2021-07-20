@@ -12,4 +12,4 @@ The tool has been verified on the following versions of Unity:
 
 *  *  *  *  *
 
-![](/Screenshots/NormalMapEditor_Screenshot001.PNG)
+![](/Screenshots/NormalMapEditor_Screenshot001.png)
